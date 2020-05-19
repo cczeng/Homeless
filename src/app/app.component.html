@@ -1,3 +1,8 @@
+<!--
+ * @Date: 2020-05-19 11:33:41
+ * @LastEditors: cczeng
+ * @LastEditTime: 2020-05-19 17:25:56
+--> 
 <nz-layout class="app-layout">
   <nz-sider class="menu-sidebar"
             nzCollapsible
@@ -8,29 +13,12 @@
     <div class="sidebar-logo">
       <a href="https://ng.ant.design/" target="_blank">
         <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-        <h1>Ant Design Of Angular</h1>
+        <h1>流浪客</h1>
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome">Welcome</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Monitor</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Workplace</a>
-          </li>
-        </ul>
-      </li>
-      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a>Basic Form</a>
-          </li>
-        </ul>
+      <li  nz-menu-item nzMatchRouter>
+        <a routerLink="/home">安居</a>
       </li>
     </ul>
   </nz-sider>
