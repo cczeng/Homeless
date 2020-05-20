@@ -1,14 +1,16 @@
 /*
  * @Date: 2020-05-19 11:33:41
  * @LastEditors: cczeng
- * @LastEditTime: 2020-05-19 17:20:53
+ * @LastEditTime: 2020-05-20 15:54:17
  */
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
-  { path: '', pathMatch: 'full', redirectTo: '/home' },
+  {
+    path: '',
+    loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule),
+  },
 ];
 
 @NgModule({
