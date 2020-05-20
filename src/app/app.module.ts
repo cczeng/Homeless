@@ -1,8 +1,8 @@
 /*
  * @Date: 2020-05-19 11:33:41
  * @LastEditors: cczeng
- * @LastEditTime: 2020-05-19 17:29:56
- */ 
+ * @LastEditTime: 2020-05-20 16:03:32
+ */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -18,12 +18,20 @@ import { registerLocaleData } from '@angular/common';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 import zh from '@angular/common/locales/zh';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { NotfoundComponent } from './pages/auth/notfound/notfound.component';
 
 registerLocaleData(zh);
 
+const COMPONENTS = [
+  LoginComponent,
+  NotfoundComponent,
+];
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ...COMPONENTS,
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,18 @@
+/*
+ * @Date: 2020-05-19 17:24:58
+ * @LastEditors: cczeng
+ * @LastEditTime: 2020-05-20 17:31:18
+ */
 import { Component, OnInit } from '@angular/core';
+import { CanComponentDeactivate } from 'src/app/auth/can-deactivate.guard';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.less']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, CanComponentDeactivate {
 
 
   columnDefs = [
@@ -20,9 +27,15 @@ export class HomeComponent implements OnInit {
     { make: 'Porsche', model: 'Boxter', price: 72000 }
   ];
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+  ) { }
 
   ngOnInit(): void {
   }
 
+  canDeactivate() {
+    console.log('想返回？先过我这关');
+    return this.authService.canBackModal();
+  }
 }
