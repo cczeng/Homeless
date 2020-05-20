@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-05-20 16:44:55
  * @LastEditors: cczeng
- * @LastEditTime: 2020-05-20 17:42:35
+ * @LastEditTime: 2020-05-20 18:12:14
  */
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
@@ -17,6 +17,8 @@ export class AuthService {
   isLoggedIn = false;
 
   redirectUrl: string;
+
+  token = '';
 
 
   constructor(
@@ -44,6 +46,17 @@ export class AuthService {
     // 做一些清理动作
   }
 
+
+
+  /**
+   * 获取当前的 token
+   *
+   * @returns {string}
+   * @memberof AuthService
+   */
+  getAuthorizationToken(): string {
+    return this.token;
+  }
 
   /**
    * 重定向路由，会先判断当前有没有登录之前的页面，如果有则跳转

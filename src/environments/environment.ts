@@ -1,9 +1,15 @@
+/*
+ * @Date: 2020-05-19 11:33:41
+ * @LastEditors: cczeng
+ * @LastEditTime: 2020-05-20 18:06:28
+ */ 
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api: 'baidu.com/api/',
 };
 
 /*

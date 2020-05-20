@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-05-19 11:33:41
  * @LastEditors: cczeng
- * @LastEditTime: 2020-05-20 16:03:32
+ * @LastEditTime: 2020-05-20 18:02:53
  */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -20,6 +20,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import zh from '@angular/common/locales/zh';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { NotfoundComponent } from './pages/auth/notfound/notfound.component';
+import { httpInterceptorProviders } from './interceptors';
 
 registerLocaleData(zh);
 
@@ -42,7 +43,10 @@ const COMPONENTS = [
     NgZorroAntdModule,
     AppRoutingModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  providers: [
+    httpInterceptorProviders,
+    { provide: NZ_I18N, useValue: zh_CN },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
