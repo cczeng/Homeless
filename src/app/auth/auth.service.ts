@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-05-20 16:44:55
  * @LastEditors: cczeng
- * @LastEditTime: 2020-05-20 18:12:14
+ * @LastEditTime: 2020-05-21 11:12:39
  */
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
@@ -24,7 +24,14 @@ export class AuthService {
   constructor(
     private router: Router,
     private modal: NzModalService,
-  ) { }
+  ) {
+    // 模拟获取是否登录
+    const token = localStorage.getItem('token');
+    if (token) {
+      console.log('获取当前登录状态', token);
+      this.isLoggedIn = true;
+    }
+  }
 
 
   /**
@@ -36,7 +43,9 @@ export class AuthService {
   login(): Observable<boolean> {
     return of(true).pipe(
       delay(1000),
-      tap(val => this.isLoggedIn = true),
+      tap(val => {
+        this.isLoggedIn = true;
+      }),
     );
   }
 
@@ -44,6 +53,7 @@ export class AuthService {
   logout(): void {
     this.isLoggedIn = false;
     // 做一些清理动作
+    localStorage.removeItem('token');
   }
 
 

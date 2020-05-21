@@ -1,10 +1,10 @@
 <!--
  * @Date: 2020-05-20 15:27:07
  * @LastEditors: cczeng
- * @LastEditTime: 2020-05-20 15:34:59
+ * @LastEditTime: 2020-05-21 11:25:34
 -->
 <nz-layout class="app-layout">
-    <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md"  [(nzCollapsed)]="isCollapsed"
         [nzTrigger]="null">
         <div class="sidebar-logo">
             <a href="https://ng.ant.design/" target="_blank">
@@ -20,6 +20,19 @@
                 <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
                     <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
                 </span>
+
+                <div class="user-info">
+                    <nz-badge nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu"
+                        [nzPlacement]="'bottomLeft'" [nzCount]="5">
+                        <nz-avatar nzIcon="user"></nz-avatar>
+                    </nz-badge>
+
+                    <nz-dropdown-menu #menu="nzDropdownMenu">
+                        <ul nz-menu nzSelectable class="p-2">
+                            <li nz-menu-item (click)="logout()">退出登录</li>
+                        </ul>
+                    </nz-dropdown-menu>
+                </div>
             </div>
         </nz-header>
         <nz-content>

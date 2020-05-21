@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-05-20 16:02:41
  * @LastEditors: cczeng
- * @LastEditTime: 2020-05-20 17:14:52
+ * @LastEditTime: 2020-05-21 10:17:29
  */
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { timer } from 'rxjs';
@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
   login() {
     // 可以调用其他服务发起登录请求，但是记得修改 authService 的登录状态
     this.authService.login().subscribe(res => {
+      localStorage.setItem('token', `ewogICJhbGciOiAiSFMyNTYiLAogICJ0eXAiOiAiSldUIgp9.ewoiYXV0aG9yIjoiY2N6ZW5nIiwKfQ.a111199977f195323f98ef432828f7b772dd76d395d50cd434720e559fe0ad18`);
       this.authService.redirectTo('/home');
     });
   }
