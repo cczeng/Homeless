@@ -1,10 +1,10 @@
 /*
  * @Date: 2020-05-19 11:33:41
  * @LastEditors: cczeng
- * @LastEditTime: 2020-05-20 18:02:53
+ * @LastEditTime: 2020-05-21 09:50:22
  */
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +23,22 @@ import { NotfoundComponent } from './pages/auth/notfound/notfound.component';
 import { httpInterceptorProviders } from './interceptors';
 
 registerLocaleData(zh);
+
+//  下面是APP 初始化时候执行一系列动作的办法
+import { StartupService } from './startup/startup.service';
+export function StartupServiceFactory(startupService: StartupService) {
+  return () => startupService.AppInit();
+}
+const APPINIT_PROVIDES = [
+  StartupService,
+  {
+    provide: APP_INITIALIZER,
+    useFactory: StartupServiceFactory,
+    deps: [StartupService],
+    multi: true,
+  }
+];
+
 
 const COMPONENTS = [
   LoginComponent,
@@ -45,6 +61,7 @@ const COMPONENTS = [
   ],
   providers: [
     httpInterceptorProviders,
+    ...APPINIT_PROVIDES,
     { provide: NZ_I18N, useValue: zh_CN },
   ],
   bootstrap: [AppComponent]
