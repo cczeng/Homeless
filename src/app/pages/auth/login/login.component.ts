@@ -1,13 +1,14 @@
 /*
  * @Date: 2020-05-20 16:02:41
  * @LastEditors: cczeng
- * @LastEditTime: 2020-05-21 10:17:29
+ * @LastEditTime: 2020-05-22 15:10:00
  */
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { timer } from 'rxjs';
 import { takeWhile, map } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private authService: AuthService,
     private router: Router,
+    private storage: LocalStorageService,
   ) { }
 
   ngOnInit(): void {
@@ -45,7 +47,7 @@ export class LoginComponent implements OnInit {
   login() {
     // 可以调用其他服务发起登录请求，但是记得修改 authService 的登录状态
     this.authService.login().subscribe(res => {
-      localStorage.setItem('token', `ewogICJhbGciOiAiSFMyNTYiLAogICJ0eXAiOiAiSldUIgp9.ewoiYXV0aG9yIjoiY2N6ZW5nIiwKfQ.a111199977f195323f98ef432828f7b772dd76d395d50cd434720e559fe0ad18`);
+      this.storage.setItem('token', `ewogICJhbGciOiAiSFMyNTYiLAogICJ0eXAiOiAiSldUIgp9.ewoiYXV0aG9yIjoiY2N6ZW5nIiwKfQ.a111199977f195323f98ef432828f7b772dd76d395d50cd434720e559fe0ad18`);
       this.authService.redirectTo('/home');
     });
   }
