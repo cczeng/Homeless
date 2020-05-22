@@ -1,15 +1,15 @@
 /*
  * @Date: 2020-05-19 17:02:36
  * @LastEditors: cczeng
- * @LastEditTime: 2020-05-19 17:08:01
+ * @LastEditTime: 2020-05-22 16:56:59
  */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { AgGridCustomModule } from './modules/ag-grid-custom/ag-grid-custom.module';
+import { ZorroModule } from './modules/zorro/zorro.module';
 
 const MODULES = [
-  NgZorroAntdModule,
+  ZorroModule,
   AgGridCustomModule,
 ];
 

@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-05-19 11:33:41
  * @LastEditors: cczeng
- * @LastEditTime: 2020-05-21 09:50:22
+ * @LastEditTime: 2020-05-22 16:57:31
  */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
@@ -15,7 +15,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { zh_CN } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 import zh from '@angular/common/locales/zh';
 import { LoginComponent } from './pages/auth/login/login.component';
@@ -26,6 +25,7 @@ registerLocaleData(zh);
 
 //  下面是APP 初始化时候执行一系列动作的办法
 import { StartupService } from './startup/startup.service';
+import { ZorroModule } from './shared/modules/zorro/zorro.module';
 export function StartupServiceFactory(startupService: StartupService) {
   return () => startupService.AppInit();
 }
@@ -56,7 +56,7 @@ const COMPONENTS = [
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgZorroAntdModule,
+    ZorroModule,
     AppRoutingModule,
   ],
   providers: [

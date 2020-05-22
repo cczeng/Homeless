@@ -1,17 +1,17 @@
 /*
  * @Date: 2020-05-20 15:25:49
  * @LastEditors: cczeng
- * @LastEditTime: 2020-05-20 15:57:50
+ * @LastEditTime: 2020-05-22 17:24:24
  */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { FormsModule } from '@angular/forms';
 import { LayoutRoutingModule } from './layout-routing.module';
 
 import { DefaultComponent } from './default/default.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
+import { ZorroModule } from '../shared/modules/zorro/zorro.module';
 
 const COMPONENTS = [
   DefaultComponent,
@@ -25,7 +25,7 @@ const COMPONENTS = [
   imports: [
     CommonModule,
     FormsModule,
-    NgZorroAntdModule,
+    ZorroModule,
     LayoutRoutingModule,
   ],
   exports: [
